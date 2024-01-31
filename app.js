@@ -40,7 +40,6 @@ function generateAndDisplayNames() {
     var formatted_Card_Payload = {
         "type": "message",
         "mode": 'no-cors',
-        "method": 'POST',
         "headers": { 'Content-type': 'application/json' },
         "attachments": [
             {
