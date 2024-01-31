@@ -64,10 +64,13 @@ function generateAndDisplayNames() {
     // })
     fetch(webhookUrl, formatted_Card_Payload)
         .then((res) => {
-            console.log('Names sent', res)
+            if (res.status == 200)
+                console.log('Names sent', res)
+            else
+                console.log('Oops! Message not able to send')
         })
         .catch((err) => {
-            console.log('Oops! Message not able to send. \nError: ' + err)
+            console.log('Error: ' + err)
         })
 
 }
