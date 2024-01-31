@@ -67,7 +67,7 @@ function generateAndDisplayNames() {
             if (res.status == 200)
                 console.log('Names sent', res)
             else
-                console.log('Oops! Message not able to send')
+                console.log('Oops! Message not able to send', res)
         })
         .catch((err) => {
             console.log('Error: ' + err)
