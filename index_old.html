@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Random names</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Random Names List</h1>
+    <label for="names"></label>
+    <script>
+        // Function to generate a random name
+        function generateRandomName() {
+            let names = [
+                {firstName:"Mads"},
+                {firstName:"Wasim"},
+                {firstName:"Morten"},
+                {firstName:"Ulrik"},
+                {firstName:"Niclas"},
+                {firstName:"Krishna"},
+                {firstName:"Mahan"},
+                {firstName:"Ismael"},
+                {firstName:"Alex"},
+                {firstName:"Joao"},
+            ]
+            randomIndex = Math.floor(Math.random() * names.length)
+            return [names[randomIndex], names.length]
+        }
+
+        // Function to generate and display unique random names
+        function generateAndDisplayNames() {
+            names = []
+            for (let i = 1; i <= generateRandomName()[1]; i++) {
+                // If the random name is not unique, then move back counter and re-generate random name
+                randomUniqueName = generateRandomName()[0]
+                if (names.includes(randomUniqueName)) {
+                    i -= 1 
+                    continue
+                } 
+                names.push(randomUniqueName)
+                
+                // Print names in a label
+                const label = document.createElement("label")
+                label.textContent = `Number ${i}: ${randomUniqueName.firstName}`
+                document.body.appendChild(label)
+            }
+
+            // Return as objects
+            let myJSON = JSON.stringify(names)
+            let obj = JSON.parse(myJSON)
+            window.postMessage(obj)
+        }
+
+        // Call the function when the page is loaded
+        window.onload = generateAndDisplayNames;
+        
+    </script>
+</body>
+
+</html>
